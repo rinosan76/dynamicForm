@@ -20,13 +20,13 @@ import { GsSelectComponent } from './gs-select.component';
   ],
   template: `
     @switch (field.type) { @case('select'){
-    <gs-select [formGroup]="formGroup" [field]="field"></gs-select>
+    <gs-select [field]="field"></gs-select>
     } @case ('checkbox') {
-    <gs-checkbox [formGroup]="formGroup" [field]="field"></gs-checkbox>
+    <gs-checkbox [field]="field"></gs-checkbox>
     } @case ('radio') {
-    <gs-radio [formGroup]="formGroup" [field]="field"></gs-radio>
+    <gs-radio [field]="field"></gs-radio>
     } @default {
-    <gs-input [formGroup]="formGroup" [field]="field"></gs-input>
+    <gs-input [field]="field"></gs-input>
     } }
   `,
   styles: ``,
@@ -35,13 +35,12 @@ export class GsFieldComponent implements OnInit {
   //-------------------------------------------------------------------
   //PUBLIC
   @Input() field!: TTypeFiled;
-  @Input() formGroup!: FormGroup;
 
   //-------------------------------------------------------------------
   //PRIVATE
 
   //-------------------------------------------------------------------
   ngOnInit(): void {
-    console.log('FIELD', this.field);
+    // console.log('FIELD', this.field);
   }
 }

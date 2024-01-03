@@ -17,12 +17,9 @@ import { TTypeFiled } from './gs-form-type';
     <h1>Mio form</h1>
     <form [formGroup]="form">
       <div *ngFor="let field of campi">
-        <gs-field [formGroup]="form" [field]="field"></gs-field>
+        <gs-field [field]="field"></gs-field>
         @if (field.fieldName!==undefined) {
-        <gs-field-error
-          [formGroup]="form"
-          [fieldName]="field.fieldName"
-        ></gs-field-error>
+        <gs-field-error [fieldName]="field.fieldName"></gs-field-error>
         }
       </div>
     </form>

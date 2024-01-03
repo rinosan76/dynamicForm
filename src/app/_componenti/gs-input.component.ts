@@ -1,5 +1,9 @@
-import { Component, Input } from '@angular/core';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import {
+  FormGroup,
+  FormGroupDirective,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { TTypeFiled } from './gs-form-type';
 import { CommonModule } from '@angular/common';
 
@@ -17,7 +21,15 @@ import { CommonModule } from '@angular/common';
   `,
   styles: ``,
 })
-export class GsInputComponent {
+export class GsInputComponent implements OnInit {
   @Input() field!: TTypeFiled;
-  @Input() formGroup!: FormGroup;
+  formGroup!: FormGroup;
+
+  //-------------------------------------------------------------------
+  constructor(private form: FormGroupDirective) {}
+
+  //-------------------------------------------------------------------
+  ngOnInit(): void {
+    this.formGroup = this.form.control;
+  }
 }

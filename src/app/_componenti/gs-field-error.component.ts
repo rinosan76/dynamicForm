@@ -1,6 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import {
+  FormGroup,
+  FormGroupDirective,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
 @Component({
   selector: 'gs-field-error',
@@ -16,7 +20,15 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
   `,
   styles: ``,
 })
-export class GsFieldErrorComponent {
-  @Input() formGroup!: FormGroup;
+export class GsFieldErrorComponent implements OnInit {
+  formGroup!: FormGroup;
   @Input() fieldName!: string;
+
+  //-------------------------------------------------------------------
+  constructor(private form: FormGroupDirective) {}
+
+  //-------------------------------------------------------------------
+  ngOnInit(): void {
+    this.formGroup = this.form.control;
+  }
 }
